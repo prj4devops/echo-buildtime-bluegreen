@@ -34,10 +34,8 @@ podTemplate(
             }
         }
         stage('build docker container') {
-            container('maven'){
                 sh 'docker build -t 192.168.1.101:8443/echo-buildtime:$BUILD_NUMBER .'
                 sh 'docker push 192.168.1.101:8443/echo-buildtime:$BUILD_NUMBER'
-            }
         }
         stage('update pods'){
             container('kustomize'){
