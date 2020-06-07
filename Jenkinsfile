@@ -30,7 +30,7 @@ podTemplate(
         }
         stage('packaing'){
             container('maven'){
-                sh 'export MAVEN_OPTS=-Xmx300m; mvn package'
+                sh 'export MAVEN_OPTS=-Xmx200m; mvn package'
             }
         }
         stage('build docker container') {
