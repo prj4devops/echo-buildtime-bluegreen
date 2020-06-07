@@ -5,16 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 class ResultEntity {
     private String buildTime;
     private String src;
     private String dest;
+    private String hostname;
 
-    public ResultEntity(String buildTime, String src, String dest) {
+    public ResultEntity(String buildTime, String src, String dest, String hostname) {
         this.buildTime = buildTime;
         this.src = src;
         this.dest = dest;
+        this.hostname = hostname;
     }
 
     public String getBuildTime() {
@@ -40,6 +44,14 @@ class ResultEntity {
     public void setDest(String dest) {
         this.dest = dest;
     }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
+    }
 }
 
 @RestController
@@ -52,7 +64,8 @@ public class SampleController {
     }
 
     @RequestMapping("/")
-    public ResultEntity hello(HttpServletRequest request){
-        return new ResultEntity(timestamp, request.getRemoteAddr(), request.getServerName());
+    public ResultEntity hello(HttpServletRequest request) throws UnknownHostException {
+        String hostname= InetAddress.getLocalHost().getHostName();
+        return new ResultEntity(timestamp, request.getRemoteAddr(), request.getServerName(), hostname);
     }
 }
