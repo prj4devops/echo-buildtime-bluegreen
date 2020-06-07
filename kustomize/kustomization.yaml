@@ -1,3 +1,0 @@
-resource:
-- deployment.yaml
-- loadbalancer.yaml
