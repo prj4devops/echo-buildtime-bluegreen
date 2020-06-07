@@ -25,7 +25,6 @@ podTemplate(
 
 {
     node(POD_LABEL) {
-        sh 'pwd'
         stage('git scm update'){
                 git 'https://github.com/prj4devops/echo-buildtime.git'
         }
