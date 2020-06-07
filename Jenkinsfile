@@ -4,7 +4,7 @@ podTemplate(
     containerTemplate(
       name: 'maven',
       image: 'maven:3-jdk-8',
-      resourceLimitMemory: '300Mi',
+      resourceLimitMemory: '200Mi',
       ttyEnabled: true,
       command: 'cat'
     ),
