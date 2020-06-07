@@ -15,7 +15,7 @@ spec:
         app: echo-buildtime
     spec:
       containers:
-      - image: echo-buildtime:53
+      - image: 192.168.1.101:8443/echo-buildtime
         name: echo-buildtime
         resources:
           limits:
