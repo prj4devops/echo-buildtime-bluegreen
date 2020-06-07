@@ -27,9 +27,7 @@ podTemplate(
     node(POD_LABEL) {
         sh 'pwd'
         stage('git scm update'){
-            container('maven'){
                 git 'https://github.com/prj4devops/echo-buildtime.git'
-            }
         }
         stage('packaing'){
             container('maven'){
